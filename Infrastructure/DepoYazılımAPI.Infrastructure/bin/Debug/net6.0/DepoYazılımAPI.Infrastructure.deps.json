@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "DepoYazılımAPI.Infrastructure/1.0.0": {
+        "dependencies": {
+          "DepoYazılımAPI.Application": "1.0.0"
+        },
+        "runtime": {
+          "DepoYazılımAPI.Infrastructure.dll": {}
+        }
+      },
+      "DepoYazılımAPI.Application/1.0.0": {
+        "dependencies": {
+          "DepoYazılımAPI.Domin": "1.0.0"
+        },
+        "runtime": {
+          "DepoYazılımAPI.Application.dll": {}
+        }
+      },
+      "DepoYazılımAPI.Domin/1.0.0": {
+        "runtime": {
+          "DepoYazılımAPI.Domin.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DepoYazılımAPI.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DepoYazılımAPI.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DepoYazılımAPI.Domin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
