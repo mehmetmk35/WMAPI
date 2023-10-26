@@ -32,7 +32,7 @@ namespace DepoYazılımAPI.Domin.Entity.StockCard
         public string? WarehouseCode { get; set; }
         public decimal? PurchasePrice1 { get; set; }
         public decimal? PurchasePrice2 { get; set; }
-        public ICollection<Barcode>? barcodes { get; set; }
+        public ICollection<Barcode>? barcodes { get; set; }//burası kontrol edilcektir 
         public bool?  Lock { get; set; }
         public string? AdditionalFields { get; set; }
         public string? MK1 { get; set; }

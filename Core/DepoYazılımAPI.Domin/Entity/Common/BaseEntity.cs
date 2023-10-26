@@ -13,5 +13,7 @@ namespace DepoYazılımAPI.Domin.Entity.Common
         public string CompanyName { get; set; }
         [Required]
         public string BranchCode { get; set; }
+        public DateTime? UDate { get; set; }
+        public DateTime? DDate { get; set; }
     }
 }

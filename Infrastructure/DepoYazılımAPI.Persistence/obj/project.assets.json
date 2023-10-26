@@ -1237,7 +1237,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "DepoYazılımAPI.Domin": "1.0.0"
+          "DepoYazılımAPI.Domin": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.13"
         },
         "compile": {
           "bin/placeholder/DepoYazılımAPI.Application.dll": {}
@@ -3822,5 +3823,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Warning As Error: Detected package downgrade: Microsoft.EntityFrameworkCore from 7.0.13 to 7.0.11. Reference the package directly from the project to select a different version. \r\n DepoYazılımAPI.Persistence -> DepoYazılımAPI.Application -> Microsoft.EntityFrameworkCore (>= 7.0.13) \r\n DepoYazılımAPI.Persistence -> Microsoft.EntityFrameworkCore (>= 7.0.11)",
+      "libraryId": "Microsoft.EntityFrameworkCore",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
