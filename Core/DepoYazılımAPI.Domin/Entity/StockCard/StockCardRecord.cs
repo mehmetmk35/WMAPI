@@ -38,7 +38,7 @@ namespace DepoYazılımAPI.Domin.Entity.StockCard
         public string? MK1 { get; set; }
         public string? MK2 { get; set; }
 
-        public DateTime Date { get; set; }
+       
 
     }
 }

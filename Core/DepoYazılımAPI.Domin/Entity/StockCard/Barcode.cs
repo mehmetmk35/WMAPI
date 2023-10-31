@@ -11,5 +11,7 @@ namespace DepoYazılımAPI.Domin.Entity.StockCard
         public int ID { get; set; }
         public StockCardRecord StockCode { get; set; }
         public long Barcodes { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

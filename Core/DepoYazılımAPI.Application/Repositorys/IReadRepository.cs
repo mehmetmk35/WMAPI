@@ -12,6 +12,6 @@ namespace DepoYazılımAPI.Application.Repositorys
         IQueryable<T>  Get(int id);
         IQueryable<T> GetWhere(Expression<Func<T,bool>> metod);
         Task<T> GetSingleAsync(Expression<Func<T, bool>> metod);
-        Task<T> GetByIdAsync(string id);
+        Task<T> GetByIdAsync(Expression<Func<T, bool>> metod);
     }
 }
