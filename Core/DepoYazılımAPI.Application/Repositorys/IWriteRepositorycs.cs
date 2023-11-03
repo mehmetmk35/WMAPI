@@ -12,7 +12,7 @@ namespace DepoYazılımAPI.Application.Repositorys
         Task<bool> AddAsync(T model);
         Task<bool> AddRangeAsync(List<T> datas);
         bool Remove(T model);
-        Task<bool> Remove(Expression<Func<T, bool>> metod));
+        Task<bool> Remove(Expression<Func<T, bool>> metod);
         bool RemoveRange(List<T> datas);
         bool Update(T model);
         Task<int> SaveAsync();

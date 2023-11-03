@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Protocols;
 using Microsoft.Extensions.Configuration;
+using DepoYazılımAPI.Application.Repositorys;
 
 namespace DepoYazılımAPI.Persistence
 {
@@ -17,10 +18,8 @@ namespace DepoYazılımAPI.Persistence
         public static void AddPersistenceServices(this IServiceCollection services)
         {
            
-            services.AddDbContext<DepoYazılımAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
-        } public static void AddPersistenceServicess(this IServiceCollection services)
-        {
-            services.AddSingleton<IStockCardListService,StockCardListService>();
+            services.AddDbContext<DepoYazılımAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString),ServiceLifetime.Singleton);
+            services.AddSingleton<IStockCardReadRepository, StockCardReadRepository>();
+            services.AddSingleton<IStockCardWriteRepository, StockCardWriteRepository>();
         }
-    }
 }

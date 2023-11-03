@@ -12,7 +12,7 @@ namespace DepoYazılımAPI.Domin.Entity.Common
         [Required]
         public string CompanyName { get; set; }
         [Required]
-        public string BranchCode { get; set; }
+        public int BranchCode { get; set; }
  
         public string CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }

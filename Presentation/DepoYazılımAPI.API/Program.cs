@@ -2,7 +2,7 @@ using DepoYazýlýmAPI.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistenceServices();
-builder.Services.AddPersistenceServicess();
+ 
 
 builder.Services.AddControllers();
 
