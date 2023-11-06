@@ -18,8 +18,9 @@ namespace DepoYazılımAPI.Persistence
         public static void AddPersistenceServices(this IServiceCollection services)
         {
            
-            services.AddDbContext<DepoYazılımAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString),ServiceLifetime.Singleton);
-            services.AddSingleton<IStockCardReadRepository, StockCardReadRepository>();
-            services.AddSingleton<IStockCardWriteRepository, StockCardWriteRepository>();
+            services.AddDbContext<DepoYazılımAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
+            services.AddScoped<IStockCardReadRepository, StockCardReadRepository>();
+            services.AddScoped<IStockCardWriteRepository, StockCardWriteRepository>();
         }
+}
 }

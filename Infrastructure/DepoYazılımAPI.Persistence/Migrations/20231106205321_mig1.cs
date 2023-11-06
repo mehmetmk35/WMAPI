@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace DepoYazılımAPI.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class Mig1 : Migration
+    public partial class mig1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,8 +27,14 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     CustomerAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MK1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MK2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BranchCode = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    BranchCode = table.Column<int>(type: "int", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,7 +47,7 @@ namespace DepoYazılımAPI.Persistence.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StockCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StockCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StockName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GroupCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Code1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -50,23 +57,28 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     UnitOfMeasure1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UnitOfMeasure2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UnitOfMeasure3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UnitOfMeasure1Denominator = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    UnitOfMeasure1Numerator = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    UnitOfMeasure2Denominator = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    UnitOfMeasure2Numerator = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SellingPrice1 = table.Column<long>(type: "bigint", nullable: false),
-                    SellingPrice2 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    VATRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    UnitOfMeasure1Denominator = table.Column<decimal>(type: "decimal(28,8)", nullable: true),
+                    UnitOfMeasure1Numerator = table.Column<decimal>(type: "decimal(28,8)", nullable: true),
+                    UnitOfMeasure2Denominator = table.Column<decimal>(type: "decimal(28,8)", nullable: true),
+                    UnitOfMeasure2Numerator = table.Column<decimal>(type: "decimal(28,8)", nullable: true),
+                    SellingPrice1 = table.Column<decimal>(type: "decimal(28,8)", nullable: true),
+                    SellingPrice2 = table.Column<decimal>(type: "decimal(28,8)", nullable: true),
+                    VATRate = table.Column<decimal>(type: "decimal(28,8)", nullable: true),
                     PurchaseVATCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WarehouseCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PurchasePrice1 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PurchasePrice2 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Lock = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PurchasePrice1 = table.Column<decimal>(type: "decimal(28,8)", nullable: true),
+                    PurchasePrice2 = table.Column<decimal>(type: "decimal(28,8)", nullable: true),
+                    Lock = table.Column<bool>(type: "bit", nullable: true),
                     AdditionalFields = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MK1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MK2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BranchCode = table.Column<string>(type: "nvarchar(max)", nullable: false, defaultValueSql: "0")
+                    BranchCode = table.Column<int>(type: "int", nullable: false, defaultValueSql: "0"),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -79,8 +91,10 @@ namespace DepoYazılımAPI.Persistence.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StockCodeID = table.Column<int>(type: "int", nullable: true),
-                    Barcodes = table.Column<long>(type: "bigint", nullable: false)
+                    StockCodeID = table.Column<int>(type: "int", nullable: false),
+                    Barcodes = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -89,7 +103,8 @@ namespace DepoYazılımAPI.Persistence.Migrations
                         name: "FK_Barcodes_ItemRecords_StockCodeID",
                         column: x => x.StockCodeID,
                         principalTable: "ItemRecords",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

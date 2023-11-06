@@ -17,7 +17,7 @@ namespace DepoYazılımAPI.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.11")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -27,9 +27,8 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("BranchCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("BranchCode")
+                        .HasColumnType("int");
 
                     b.Property<string>("BusinessCode")
                         .HasColumnType("nvarchar(max)");
@@ -39,6 +38,13 @@ namespace DepoYazılımAPI.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CountryCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustomerAddress")
@@ -59,8 +65,14 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     b.Property<string>("CustomerPhone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("GroupCode")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("MK1")
                         .HasColumnType("nvarchar(max)");
@@ -68,14 +80,11 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     b.Property<string>("MK2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("test")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal?>("test2")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime?>("test3")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -93,7 +102,14 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     b.Property<long>("Barcodes")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("StockCodeID")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StockCodeID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -114,10 +130,9 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     b.Property<string>("AdditionalFields")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BranchCode")
-                        .IsRequired()
+                    b.Property<int>("BranchCode")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("int")
                         .HasDefaultValueSql("0");
 
                     b.Property<string>("Code1")
@@ -136,13 +151,24 @@ namespace DepoYazılımAPI.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GroupCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Lock")
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool?>("Lock")
                         .HasColumnType("bit");
 
                     b.Property<string>("MK1")
@@ -151,22 +177,23 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     b.Property<string>("MK2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("PurchasePrice1")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal?>("PurchasePrice1")
+                        .HasColumnType("decimal(28, 8)");
 
-                    b.Property<decimal>("PurchasePrice2")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal?>("PurchasePrice2")
+                        .HasColumnType("decimal(28, 8)");
 
                     b.Property<string>("PurchaseVATCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("SellingPrice1")
-                        .HasColumnType("bigint");
+                    b.Property<decimal?>("SellingPrice1")
+                        .HasColumnType("decimal(28, 8)");
 
-                    b.Property<decimal>("SellingPrice2")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal?>("SellingPrice2")
+                        .HasColumnType("decimal(28, 8)");
 
                     b.Property<string>("StockCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StockName")
@@ -175,32 +202,35 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     b.Property<string>("UnitOfMeasure1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("UnitOfMeasure1Denominator")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal?>("UnitOfMeasure1Denominator")
+                        .HasColumnType("decimal(28, 8)");
 
-                    b.Property<decimal>("UnitOfMeasure1Numerator")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal?>("UnitOfMeasure1Numerator")
+                        .HasColumnType("decimal(28, 8)");
 
                     b.Property<string>("UnitOfMeasure2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("UnitOfMeasure2Denominator")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal?>("UnitOfMeasure2Denominator")
+                        .HasColumnType("decimal(28, 8)");
 
-                    b.Property<decimal>("UnitOfMeasure2Numerator")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal?>("UnitOfMeasure2Numerator")
+                        .HasColumnType("decimal(28, 8)");
 
                     b.Property<string>("UnitOfMeasure3")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("VATRate")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("VATRate")
+                        .HasColumnType("decimal(28, 8)");
 
                     b.Property<string>("WarehouseCode")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal?>("test")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ID");
 
@@ -210,15 +240,12 @@ namespace DepoYazılımAPI.Persistence.Migrations
             modelBuilder.Entity("DepoYazılımAPI.Domin.Entity.StockCard.Barcode", b =>
                 {
                     b.HasOne("DepoYazılımAPI.Domin.Entity.StockCard.StockCardRecord", "StockCode")
-                        .WithMany("barcodes")
-                        .HasForeignKey("StockCodeID");
+                        .WithMany()
+                        .HasForeignKey("StockCodeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("StockCode");
-                });
-
-            modelBuilder.Entity("DepoYazılımAPI.Domin.Entity.StockCard.StockCardRecord", b =>
-                {
-                    b.Navigation("barcodes");
                 });
 #pragma warning restore 612, 618
         }

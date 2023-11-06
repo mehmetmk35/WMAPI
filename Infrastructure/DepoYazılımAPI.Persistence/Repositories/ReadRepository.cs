@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DepoYazılımAPI.Persistence.Repositories
 {
@@ -21,14 +22,32 @@ namespace DepoYazılımAPI.Persistence.Repositories
 
         public DbSet<T> Table => _context.Set<T>();
 
-        public IQueryable<T> Get(int id) => Table;
-        public IQueryable<T> GetWhere(Expression<Func<T, bool>> metod)=>Table.Where(metod);
-        
-        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> metod)
-            =>await Table.FirstOrDefaultAsync(metod);        
+        public IQueryable<T> Get(bool tracking = true)
+        {
+            var query=Table.AsQueryable();
+            if (!tracking) 
+                    query=query.AsNoTracking(); //takip edilmesini istenmediği zaman 
+            return query;
+        }
+        public IQueryable<T> GetWhere(Expression<Func<T, bool>> metod, bool tracking = true)
+        {
 
-       public async Task<T> GetByIdAsync(Expression<Func<T, bool>> metod)
-            => await Table.FirstOrDefaultAsync(metod);
+            var query = Table.Where(metod).AsQueryable();
+            if (!tracking)
+                query = query.AsNoTracking();  
+            return query;
+
+        }
+        
+        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> metod, bool tracking = true)
+        {
+            var query=  Table.AsQueryable();
+            if (!tracking)
+                query = query.AsNoTracking();  
+            return await query.FirstOrDefaultAsync(metod);
+        }       
+
+     
 
          
     }
