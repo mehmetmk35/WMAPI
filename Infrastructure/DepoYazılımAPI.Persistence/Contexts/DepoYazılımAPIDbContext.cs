@@ -1,4 +1,6 @@
-﻿using DepoYazılımAPI.Domin.Entity.CustomerItem;
+﻿using DepoYazılımAPI.Domin.Entity.Common;
+using DepoYazılımAPI.Domin.Entity;
+using DepoYazılımAPI.Domin.Entity.CustomerItem;
 using DepoYazılımAPI.Domin.Entity.StockCard;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+ 
 
 namespace DepoYazılımAPI.Persistence.Concretes
 {
@@ -22,7 +25,10 @@ namespace DepoYazılımAPI.Persistence.Concretes
 
             modelBuilder.Entity<StockCardRecord>(entity => {
 
-            entity.Property(e => e.BranchCode)
+             entity.HasKey(e => e.StockCode)
+            .HasName("itemrecords_pkey");
+
+             entity.Property(e => e.BranchCode)
             .HasDefaultValueSql(("0"));
              entity.Property(e => e.IsDeleted)
             .HasColumnType("bit")
@@ -71,8 +77,37 @@ namespace DepoYazılımAPI.Persistence.Concretes
        public DbSet<StockCardRecord> ItemRecords { get; set; }
        public DbSet<Barcode> Barcodes { get; set; }
 
-       
 
+
+
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            //update işlemlerinde changeTracker ile yakalayıp UpdatedAt alanına datedate veriyoruz
+            //In update operations, we capture changes with ChangeTracker and assign a date to the UpdatedAt field.
+            var datas = ChangeTracker.Entries<BaseEntity>();
+            foreach (var data in datas)
+            {
+               
+                switch (data.State)
+                {
+                    case EntityState.Deleted:
+                        data.Entity.IsDeleted = true;
+                        data.Entity.DeletedDate = DateTime.UtcNow;
+                        data.State = EntityState.Modified;
+                        break;
+                    case EntityState.Added:
+                        data.Entity.CreatedAt = DateTime.UtcNow;
+                        data.Entity.IsDeleted = false;
+                        break;
+                    case EntityState.Modified:
+                        data.Entity.UpdatedAt = DateTime.UtcNow;
+                        break;
+                     
+                }
+            }
+            return await base.SaveChangesAsync(cancellationToken);
+        }
 
 
 

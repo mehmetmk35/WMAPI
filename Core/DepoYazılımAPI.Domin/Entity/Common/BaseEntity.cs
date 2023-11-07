@@ -18,6 +18,7 @@ namespace DepoYazılımAPI.Domin.Entity.Common
         public DateTime CreatedAt { get; set; }
         public string? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public DateTime? DeletedDate { get; set; }
         public bool IsDeleted { get; set; }
 
     }

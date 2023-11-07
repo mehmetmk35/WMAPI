@@ -10,7 +10,8 @@ namespace DepoYazılımAPI.Domin.Entity.StockCard
 {
     public class StockCardRecord : BaseEntity
     {
-        public int ID { get; set; }      
+        public int ID { get; set; }
+       
         public string StockCode { get; set; }
         public string? StockName { get; set; }
         public string? GroupCode { get; set; }

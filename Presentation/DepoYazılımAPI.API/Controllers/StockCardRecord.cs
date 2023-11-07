@@ -21,9 +21,7 @@ namespace DepoYazılımAPI.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            await _stockCardWriteRepository.AddRangeAsync(
-                new() { new() { StockCode = "test1", CompanyName = "KUMRU", BranchCode = 0, CreatedBy = "MEHMET", CreatedAt = DateTime.UtcNow } }
-                );
+            await _stockCardWriteRepository.Remove(x => x.StockCode == "test2");
             await _stockCardWriteRepository.SaveAsync();
             return Ok("ok");
         }

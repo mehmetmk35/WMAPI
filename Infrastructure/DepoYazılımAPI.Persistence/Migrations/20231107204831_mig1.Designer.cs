@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DepoYazılımAPI.Persistence.Migrations
 {
     [DbContext(typeof(DepoYazılımAPIDbContext))]
-    [Migration("20231106205321_mig1")]
+    [Migration("20231107204831_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -71,6 +71,9 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("GroupCode")
                         .HasColumnType("nvarchar(max)");
 
@@ -112,23 +115,21 @@ namespace DepoYazılımAPI.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StockCodeID")
-                        .HasColumnType("int");
+                    b.Property<string>("StockCode1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("StockCodeID");
+                    b.HasIndex("StockCode1");
 
                     b.ToTable("Barcodes");
                 });
 
             modelBuilder.Entity("DepoYazılımAPI.Domin.Entity.StockCard.StockCardRecord", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    b.Property<string>("StockCode")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AdditionalFields")
                         .HasColumnType("nvarchar(max)");
@@ -163,8 +164,14 @@ namespace DepoYazılımAPI.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("GroupCode")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ID")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -194,10 +201,6 @@ namespace DepoYazılımAPI.Persistence.Migrations
 
                     b.Property<decimal?>("SellingPrice2")
                         .HasColumnType("decimal(28, 8)");
-
-                    b.Property<string>("StockCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StockName")
                         .HasColumnType("nvarchar(max)");
@@ -235,7 +238,8 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     b.Property<string>("WarehouseCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("StockCode")
+                        .HasName("itemrecords_pkey");
 
                     b.ToTable("ItemRecords");
                 });
@@ -244,7 +248,7 @@ namespace DepoYazılımAPI.Persistence.Migrations
                 {
                     b.HasOne("DepoYazılımAPI.Domin.Entity.StockCard.StockCardRecord", "StockCode")
                         .WithMany()
-                        .HasForeignKey("StockCodeID")
+                        .HasForeignKey("StockCode1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

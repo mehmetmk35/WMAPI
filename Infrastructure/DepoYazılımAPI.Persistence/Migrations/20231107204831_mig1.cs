@@ -34,6 +34,7 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -45,9 +46,8 @@ namespace DepoYazılımAPI.Persistence.Migrations
                 name: "ItemRecords",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StockCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StockCode = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false),
                     StockName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GroupCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Code1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -78,11 +78,12 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ItemRecords", x => x.ID);
+                    table.PrimaryKey("itemrecords_pkey", x => x.StockCode);
                 });
 
             migrationBuilder.CreateTable(
@@ -91,7 +92,7 @@ namespace DepoYazılımAPI.Persistence.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StockCodeID = table.Column<int>(type: "int", nullable: false),
+                    StockCode1 = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Barcodes = table.Column<long>(type: "bigint", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -100,17 +101,17 @@ namespace DepoYazılımAPI.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Barcodes", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Barcodes_ItemRecords_StockCodeID",
-                        column: x => x.StockCodeID,
+                        name: "FK_Barcodes_ItemRecords_StockCode1",
+                        column: x => x.StockCode1,
                         principalTable: "ItemRecords",
-                        principalColumn: "ID",
+                        principalColumn: "StockCode",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Barcodes_StockCodeID",
+                name: "IX_Barcodes_StockCode1",
                 table: "Barcodes",
-                column: "StockCodeID");
+                column: "StockCode1");
         }
 
         /// <inheritdoc />
