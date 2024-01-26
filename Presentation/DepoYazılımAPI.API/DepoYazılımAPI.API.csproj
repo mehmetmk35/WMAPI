@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\DepoYazılımAPI.Application\DepoYazılımAPI.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\DepoYazılımAPI.Infrastructure\DepoYazılımAPI.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\DepoYazılımAPI.Persistence\DepoYazılımAPI.Persistence.csproj" />
   </ItemGroup>
 

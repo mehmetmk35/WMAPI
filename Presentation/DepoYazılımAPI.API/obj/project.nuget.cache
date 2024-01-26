@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "M2W4k38PYoDRrxvglrrRhFH7yocZc7NPRKhNFsyja/pp3qMiKFw859ak5yAUVGYpRPdCVusQUPvDd5oO+aEdUA==",
+  "dgSpecHash": "wygVQ/S+e68FrsYOdr3CjbY85uP7ebRwo+W88JFBEX0MjtOZ8YRpWcySe2UK1N1b+1YwtNUqiksN76gzYxmDNQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\admin\\Desktop\\proje\\Depo_Yazılım\\BENIM\\DepoYazılımAPI\\Presentation\\DepoYazılımAPI.API\\DepoYazılımAPI.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.0\\fluentvalidation.dependencyinjectionextensions.11.9.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

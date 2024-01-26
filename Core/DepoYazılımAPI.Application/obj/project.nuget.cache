@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "0itWqmTJsTBdXZvYfrvgMUCv1nOgUUzoaj6h6NHHYWUSdqwL64SvFs49bReIh1arluQNtNrdNMlIxwGv9JHw/A==",
+  "dgSpecHash": "HBctWiSJq+xOhBh5kfhsHki7fKyGdl3kqM1XPkCpzP7CZR6/bshlMrQ8RQaHBeh8YtewO1VwC6ulD7jDa3zn0g==",
   "success": true,
   "projectFilePath": "C:\\Users\\admin\\Desktop\\proje\\Depo_Yazılım\\BENIM\\DepoYazılımAPI\\Core\\DepoYazılımAPI.Application\\DepoYazılımAPI.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.0\\fluentvalidation.dependencyinjectionextensions.11.9.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.13\\microsoft.entityframeworkcore.7.0.13.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.13\\microsoft.entityframeworkcore.abstractions.7.0.13.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.13\\microsoft.entityframeworkcore.analyzers.7.0.13.nupkg.sha512",

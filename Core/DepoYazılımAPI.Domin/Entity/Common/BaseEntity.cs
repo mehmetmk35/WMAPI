@@ -8,12 +8,9 @@ using System.Threading.Tasks;
 namespace DepoYazılımAPI.Domin.Entity.Common
 {
     public class BaseEntity
-    {
-        [Required]
-        public string CompanyName { get; set; }
-        [Required]
-        public int BranchCode { get; set; }
- 
+    {      
+        public string CompanyName { get; set; }         
+        public int BranchCode { get; set; } 
         public string CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
         public string? UpdatedBy { get; set; }

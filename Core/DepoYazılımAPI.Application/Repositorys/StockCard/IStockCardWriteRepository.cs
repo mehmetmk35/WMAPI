@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace DepoYazılımAPI.Application.Repositorys
 {
-    public interface IStockCardWriteRepository:IWriteRepositorycs<StockCardRecord>
+    public interface IStockCardWriteRepository : IWriteRepositorycs<StockCardRecord>
     {
+       
     }
 }
