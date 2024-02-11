@@ -1,0 +1,26 @@
+<mat-form-field>
+    <mat-label>StockCard</mat-label>
+    <input matInput #txtstockcode>
+  </mat-form-field>
+<mat-form-field>
+    <mat-label>Stock Name</mat-label>
+    <input matInput #txtstockname>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Created By</mat-label>
+    <input matInput #txtcreatedby>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Branch No</mat-label>
+    <input matInput type="number" value=1 min="0" #txtbranchno>
+  </mat-form-field>
+
+ 
+  <mat-form-field>
+    <mat-label>CompanyName</mat-label>
+    <input matInput #companyname>
+  </mat-form-field>
+ 
+
+  <button mat-raised-button  class="stockcard-btn"  (click)="create(txtstockcode,txtstockname,txtcreatedby,txtbranchno,companyname)"  >OLUŞTUR</button>
