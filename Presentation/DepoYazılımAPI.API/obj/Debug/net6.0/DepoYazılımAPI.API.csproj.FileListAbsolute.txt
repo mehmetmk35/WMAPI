@@ -141,3 +141,4 @@ C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\DepoYazılımAPI.Infrastructure.dll
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\DepoYazılımAPI.Infrastructure.pdb
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\DepoYazılımAPI.API.staticwebassets.runtime.json

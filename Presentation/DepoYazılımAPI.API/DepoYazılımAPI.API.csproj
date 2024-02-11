@@ -21,4 +21,9 @@
     <ProjectReference Include="..\..\Infrastructure\DepoYazılımAPI.Persistence\DepoYazılımAPI.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\resource\stockCard-img\" />
+  </ItemGroup>
+
 </Project>

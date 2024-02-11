@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DepoYazılımAPI.Application.Repositorys
 {
-    public interface IWriteRepositorycs<T>:IRepository<T> where T : class
+    public interface IWriteRepository<T>:IRepository<T> where T : class
     {
         Task<bool> AddAsync(T model);
         Task<bool> AddRangeAsync(List<T> datas);

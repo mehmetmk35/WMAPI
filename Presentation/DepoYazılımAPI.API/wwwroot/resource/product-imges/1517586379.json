@@ -1,0 +1,52 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    //"GulYapanSQL": "Server=DESKTOP-A1JG3OV;Database=USTUNHKS23;User Id=test;Password=123; TrustServerCertificate=True",
+    //"GulYapanNetsisSQL": "Server=DESKTOP-A1JG3OV;Database=NETSIS;User Id=test;Password=123; TrustServerCertificate=True",
+    //"GulYapanMysql": "server=localhost;port=3333;database=b2bgulyapan;user=root;password=123qqqaaazzz"
+    "GulYapanSQL": "Server=DESKTOP-F157VTM;Database=HHT23;User Id=test;Password=123; TrustServerCertificate=True",
+    "GulYapanNetsisSQL": "Server=DESKTOP-F157VTM;Database=NETSIS;User Id=test;Password=123; TrustServerCertificate=True",
+    "GulYapanMysql": "server=localhost;port=3306;database=b2bgulyapan;user=root;password=123qqqaaazzz"
+  },
+  "Rest": {
+    "grant_type": "password",
+    "branchcode": "0",
+    "password": "SISBIM%",
+    "username": "SISBIM",
+    //"dbname": "UYSAL2023",
+    "dbname": "HHT23",
+    "dbuser": "TEMELSET",
+    "dbpassword": "",
+    "dbtype": "0",
+    "RestUrl": "http://localhost:9090"
+    //"RestUrl": "http://localhost:7071"
+  },
+  "Installment": {
+    "Installment": "0",
+    "InstallmentRate": "0",
+    "KDV": "18",
+    //"depo": "10",
+    "depo": "1",
+    //"MuhasebeKodu": "602-01-001"
+    "MuhasebeKodu": "602-60-003",
+    "Stok_Kodu": "HIZ18"
+    //"Stok_Kodu": "HIZ20"
+  },
+  "Seriler": {
+    //"EFAT": "GLK",
+    "EFAT": "HKB",
+    //"EFAT": "HHT",
+    "EARV": "KGY"
+  },
+  "Log": {
+    "Path": "C:/"
+  }
+
+
+}

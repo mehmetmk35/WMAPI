@@ -1,4 +1,7 @@
 ﻿using DepoYazılımAPI.Application.Repositorys;
+using DepoYazılımAPI.Application.Repositorys.File;
+using DepoYazılımAPI.Application.Repositorys.File.StockCardImageFile;
+using DepoYazılımAPI.Application.Services;
 using DepoYazılımAPI.Application.ViewModels.StockCardR;
 using DepoYazılımAPI.Domain.RequestParameters;
 using DepoYazılımAPI.Domin.Entity.StockCard; 
@@ -12,15 +15,23 @@ namespace DepoYazılımAPI.API.Controllers
     {  
         private readonly IStockCardReadRepository _stockCardReadRepository;
         private readonly IStockCardWriteRepository _stockCardWriteRepository;
+        private readonly IFileService _fileService;       
+        private readonly IStockCardImageFileWriteRepository _stockCardImageFileWriteRepository;
+        private readonly IStockCardImageFileReadRepository _stockCardImageFileReadRepository;
 
-        public StockCardController(IStockCardReadRepository stockCardReadRepository, IStockCardWriteRepository stockCardWriteRepository)
+        public StockCardController(IStockCardReadRepository stockCardReadRepository, IStockCardWriteRepository stockCardWriteRepository, IFileService fileService, IStockCardImageFileWriteRepository stockCardImageFileWriteRepository, IStockCardImageFileReadRepository stockCardImageImageFileReadRepository, IStockCardImageFileReadRepository stockCardImageFileReadRepository)
         {
             _stockCardReadRepository = stockCardReadRepository;
             _stockCardWriteRepository = stockCardWriteRepository;
+            _fileService = fileService;            
+            _stockCardImageFileWriteRepository = stockCardImageFileWriteRepository;
+            _stockCardImageFileReadRepository = stockCardImageFileReadRepository;
         }
+
         [HttpPost]
         public async Task<IActionResult> Get(CreateStockCardRecord stockCardRecord)
         {
+            
             if (ModelState.IsValid)
             {
                 
@@ -38,8 +49,8 @@ namespace DepoYazılımAPI.API.Controllers
         [HttpGet]
         public async Task<IActionResult> StokList([FromQuery]Pagination pagination)
          {
-            var totalCount = _stockCardReadRepository.Get(false).Count();
-             var stockList = _stockCardReadRepository.Get(false).Select(x => new
+            var totalCount = _stockCardReadRepository.GetWhere(x => x.IsDeleted == false, false).Count();
+             var stockList = _stockCardReadRepository.GetWhere(x=>x.IsDeleted==false,false).Select(x => new
             {
                 x.StockCode,
                 x.StockName,
@@ -56,10 +67,34 @@ namespace DepoYazılımAPI.API.Controllers
         [HttpDelete("{stockCode}")]
         public async Task<IActionResult> Delete(string stockCode)
         {
+           
           
         await  _stockCardWriteRepository.Remove(stock => stock.StockCode == stockCode);
+            _stockCardWriteRepository.SaveAsync();
             return Ok();
 
         }
+
+        [HttpPost("[action]")]
+        public  async Task<IActionResult> Upload()
+        {
+           var datas= await _fileService.UploadAsync("resource/stockCard-img", Request.Form.Files);
+           await _stockCardImageFileWriteRepository.AddRangeAsync(datas.Select(d => new Domin.Entity.FileUpload.StockCardImageFile 
+           {
+              StockCard="test1",
+              Path=d.path,
+              Name=d.Filename,
+              BranchCode=1,
+              CreatedBy="mehmet",
+              CompanyName="test12"
+              
+           }
+           ).ToList());
+            await _stockCardImageFileWriteRepository.SaveAsync();
+            return Ok();
+        }
     }
+    
+    
+    
 }

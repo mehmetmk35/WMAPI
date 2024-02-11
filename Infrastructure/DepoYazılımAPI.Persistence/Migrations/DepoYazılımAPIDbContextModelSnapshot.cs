@@ -94,6 +94,52 @@ namespace DepoYazılımAPI.Persistence.Migrations
                     b.ToTable("CustomerItems");
                 });
 
+            modelBuilder.Entity("DepoYazılımAPI.Domin.Entity.FileUpload.File", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("BranchCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Files");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("File");
+
+                    b.UseTphMappingStrategy();
+                });
+
             modelBuilder.Entity("DepoYazılımAPI.Domin.Entity.StockCard.Barcode", b =>
                 {
                     b.Property<int>("ID")
@@ -239,6 +285,27 @@ namespace DepoYazılımAPI.Persistence.Migrations
                         .HasName("itemrecords_pkey");
 
                     b.ToTable("ItemRecords");
+                });
+
+            modelBuilder.Entity("DepoYazılımAPI.Domin.Entity.FileUpload.InvoiceFile", b =>
+                {
+                    b.HasBaseType("DepoYazılımAPI.Domin.Entity.FileUpload.File");
+
+                    b.Property<decimal>("InvoiceNo")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasDiscriminator().HasValue("InvoiceFile");
+                });
+
+            modelBuilder.Entity("DepoYazılımAPI.Domin.Entity.FileUpload.StockCardImageFile", b =>
+                {
+                    b.HasBaseType("DepoYazılımAPI.Domin.Entity.FileUpload.File");
+
+                    b.Property<string>("StockCard")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("StockCardImageFile");
                 });
 
             modelBuilder.Entity("DepoYazılımAPI.Domin.Entity.StockCard.Barcode", b =>

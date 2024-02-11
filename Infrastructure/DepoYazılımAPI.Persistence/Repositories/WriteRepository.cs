@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DepoYazılımAPI.Persistence.Repositories
 {
-    public class WriteRepository<T> : IWriteRepositorycs<T> where T : class
+    public class WriteRepository<T> : IWriteRepository<T> where T : class
     {
         private readonly DepoYazılımAPIDbContext _context;
 

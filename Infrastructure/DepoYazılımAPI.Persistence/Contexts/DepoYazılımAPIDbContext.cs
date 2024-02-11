@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
- 
+using DepoYazılımAPI.Domin.Entity.FileUpload;
 
 namespace DepoYazılımAPI.Persistence.Concretes
 {
@@ -73,9 +73,13 @@ namespace DepoYazılımAPI.Persistence.Concretes
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<CustomerItem> CustomerItems { get; set; }
+       public DbSet<CustomerItem> CustomerItems { get; set; }
        public DbSet<StockCardRecord> ItemRecords { get; set; }
        public DbSet<Barcode> Barcodes { get; set; }
+       public DbSet<Domin.Entity.FileUpload.File> Files { get; set; }
+       public DbSet<InvoiceFile> InvoiceFiles { get; set; }
+       public DbSet<StockCardImageFile> StockCardImageFiles { get; set; }
+
 
 
 
