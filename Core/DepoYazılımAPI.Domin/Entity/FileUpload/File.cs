@@ -19,6 +19,7 @@ namespace DepoYazılımAPI.Domin.Entity.FileUpload
         public override string? UpdatedBy { get => base.UpdatedBy; set => base.UpdatedBy = value; }
         public int ID { get; set; }
         public string Path { get; set; }
+        public string Storage { get; set; }
         public string Name { get; set; }
 
     }

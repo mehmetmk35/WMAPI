@@ -29,6 +29,14 @@
       "PackagePath": "staticwebassets\\resource\\stockCard-img\\WhatsApp-Image-2024-02-10-at-00-00-50.jpeg"
     },
     {
+      "Id": "C:\\Users\\admin\\Desktop\\proje\\Depo_Yazılım\\BENIM\\DepoYazılımAPI\\Presentation\\DepoYazılımAPI.API\\wwwroot\\resource\\stockCard-img\\WhatsApp-Image-2024-02-10-at-00-00-51.jpeg",
+      "PackagePath": "staticwebassets\\resource\\stockCard-img\\WhatsApp-Image-2024-02-10-at-00-00-51.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\admin\\Desktop\\proje\\Depo_Yazılım\\BENIM\\DepoYazılımAPI\\Presentation\\DepoYazılımAPI.API\\wwwroot\\resource\\stockCard-img\\WhatsApp-Image-2024-02-10-at-00-00-52.jpeg",
+      "PackagePath": "staticwebassets\\resource\\stockCard-img\\WhatsApp-Image-2024-02-10-at-00-00-52.jpeg"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.DepoYazılımAPI.API.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

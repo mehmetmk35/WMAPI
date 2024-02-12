@@ -1,10 +1,9 @@
-﻿using DepoYazılımAPI.Application.Repositorys;
-using DepoYazılımAPI.Application.Repositorys.File;
+﻿using DepoYazılımAPI.Application.Abstractions.Storage;
+using DepoYazılımAPI.Application.Repositorys;
 using DepoYazılımAPI.Application.Repositorys.File.StockCardImageFile;
-using DepoYazılımAPI.Application.Services;
 using DepoYazılımAPI.Application.ViewModels.StockCardR;
 using DepoYazılımAPI.Domain.RequestParameters;
-using DepoYazılımAPI.Domin.Entity.StockCard; 
+using DepoYazılımAPI.Domin.Entity.StockCard;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DepoYazılımAPI.API.Controllers
@@ -15,17 +14,17 @@ namespace DepoYazılımAPI.API.Controllers
     {  
         private readonly IStockCardReadRepository _stockCardReadRepository;
         private readonly IStockCardWriteRepository _stockCardWriteRepository;
-        private readonly IFileService _fileService;       
+        private readonly IStorageService _storageService;
         private readonly IStockCardImageFileWriteRepository _stockCardImageFileWriteRepository;
         private readonly IStockCardImageFileReadRepository _stockCardImageFileReadRepository;
 
-        public StockCardController(IStockCardReadRepository stockCardReadRepository, IStockCardWriteRepository stockCardWriteRepository, IFileService fileService, IStockCardImageFileWriteRepository stockCardImageFileWriteRepository, IStockCardImageFileReadRepository stockCardImageImageFileReadRepository, IStockCardImageFileReadRepository stockCardImageFileReadRepository)
+        public StockCardController(IStockCardReadRepository stockCardReadRepository, IStockCardWriteRepository stockCardWriteRepository, IStockCardImageFileWriteRepository stockCardImageFileWriteRepository, IStockCardImageFileReadRepository stockCardImageImageFileReadRepository, IStockCardImageFileReadRepository stockCardImageFileReadRepository, IStorageService storageService)
         {
             _stockCardReadRepository = stockCardReadRepository;
             _stockCardWriteRepository = stockCardWriteRepository;
-            _fileService = fileService;            
             _stockCardImageFileWriteRepository = stockCardImageFileWriteRepository;
             _stockCardImageFileReadRepository = stockCardImageFileReadRepository;
+            _storageService = storageService;
         }
 
         [HttpPost]
@@ -78,19 +77,18 @@ namespace DepoYazılımAPI.API.Controllers
         [HttpPost("[action]")]
         public  async Task<IActionResult> Upload()
         {
-           var datas= await _fileService.UploadAsync("resource/stockCard-img", Request.Form.Files);
-           await _stockCardImageFileWriteRepository.AddRangeAsync(datas.Select(d => new Domin.Entity.FileUpload.StockCardImageFile 
-           {
-              StockCard="test1",
-              Path=d.path,
-              Name=d.Filename,
-              BranchCode=1,
-              CreatedBy="mehmet",
-              CompanyName="test12"
-              
-           }
-           ).ToList());
-            await _stockCardImageFileWriteRepository.SaveAsync();
+            List<(string Filename, string pathOrContainerName)> datas= await _storageService.UploadAsync("resource/files", Request.Form.Files);
+
+             await _stockCardImageFileWriteRepository.AddRangeAsync(datas.Select(d => new Domin.Entity.FileUpload.StockCardImageFile
+            {
+                BranchCode = 1,
+                CompanyName = "test1",
+                CreatedBy = "mehmet",
+                Name = d.Filename,
+                Storage = _storageService.StorageName,
+                Path = d.pathOrContainerName
+            }).ToList());
+            
             return Ok();
         }
     }

@@ -1,11 +1,6 @@
-﻿using DepoYazılımAPI.Application.Services;
+﻿using DepoYazılımAPI.Application.Abstractions.Storage;
 using DepoYazılımAPI.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DepoYazılımAPI.Infrastructure
 {
@@ -13,8 +8,11 @@ namespace DepoYazılımAPI.Infrastructure
     {
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
-            services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IStorageService, StorageServices>();
         }
-
+        public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : class, IStorage
+        {
+            serviceCollection.AddScoped<IStorage, T>();
+        }
     }
 }

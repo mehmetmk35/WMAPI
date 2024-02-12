@@ -1,16 +1,10 @@
-﻿using DepoYazılımAPI.Application.Services;
-using DepoYazılımAPI.Infrastructure.Operations;
+﻿using DepoYazılımAPI.Infrastructure.Operations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DepoYazılımAPI.Infrastructure.Services
 {
-    public class FileService : IFileService
+    public class FileService 
     {   readonly IWebHostEnvironment _webHostEnvironment;
 
         public FileService(IWebHostEnvironment webHostEnvironment)
@@ -95,7 +89,7 @@ namespace DepoYazılımAPI.Infrastructure.Services
              return newFileName;
         }
 
-        public async Task<List<(string Filename, string path)>> UploadAsync(string filePath, IFormFileCollection files)
+        public async Task<List<(string Filename, string path)>> UploadAsync_(string filePath, IFormFileCollection files)
         {
             string uploadPath=Path.Combine(_webHostEnvironment.WebRootPath, filePath);
             if (!Directory.Exists(uploadPath))
