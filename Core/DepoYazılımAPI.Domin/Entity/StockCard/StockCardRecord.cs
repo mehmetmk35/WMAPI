@@ -1,4 +1,5 @@
 ﻿using DepoYazılımAPI.Domin.Entity.Common;
+using DepoYazılımAPI.Domin.Entity.FileUpload;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,8 +11,6 @@ namespace DepoYazılımAPI.Domin.Entity.StockCard
 {
     public class StockCardRecord : BaseEntity
     {
-        public int ID { get; set; }
-       
         public string StockCode { get; set; }
         public string? StockName { get; set; }
         public string? GroupCode { get; set; }
@@ -36,7 +35,9 @@ namespace DepoYazılımAPI.Domin.Entity.StockCard
         public bool?  Lock { get; set; }
         public string? AdditionalFields { get; set; }
         public string? MK1 { get; set; }
-        public string? MK2 { get; set; }       
+        public string? MK2 { get; set; }      
+        
+       public ICollection<StockCardImageFile> StockCardImageFile { get; set; }
 
     }
 }

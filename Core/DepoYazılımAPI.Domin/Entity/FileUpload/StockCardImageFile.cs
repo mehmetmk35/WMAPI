@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DepoYazılımAPI.Domin.Entity.StockCard;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace DepoYazılımAPI.Domin.Entity.FileUpload
 {
     public class StockCardImageFile:File
     {
-        public  string StockCard  { get; set; }
+        public ICollection<StockCardRecord> StockCardRecord { get; set; }
 
     }
 }

@@ -15,6 +15,11 @@ C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\BENIMDepoAPI\DepoYazılımAPI\
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\BENIMDepoAPI\DepoYazılımAPI\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\refint\DepoYazılımAPI.Persistence.dll
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\BENIMDepoAPI\DepoYazılımAPI\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.pdb
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\BENIMDepoAPI\DepoYazılımAPI\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\ref\DepoYazılımAPI.Persistence.dll
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.AssemblyInfo.cs
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\bin\Debug\net6.0\DepoYazılımAPI.Persistence.deps.json
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\bin\Debug\net6.0\DepoYazılımAPI.Persistence.runtimeconfig.json
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\bin\Debug\net6.0\DepoYazılımAPI.Persistence.dll
@@ -23,11 +28,6 @@ C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructur
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\bin\Debug\net6.0\DepoYazılımAPI.Domin.dll
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\bin\Debug\net6.0\DepoYazılımAPI.Application.pdb
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\bin\Debug\net6.0\DepoYazılımAPI.Domin.pdb
-C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.csproj.AssemblyReference.cache
-C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.AssemblyInfoInputs.cache
-C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.AssemblyInfo.cs
-C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.csproj.CopyComplete
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\DepoYazılımAPI.Persistence.dll
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Infrastructure\DepoYazılımAPI.Persistence\obj\Debug\net6.0\refint\DepoYazılımAPI.Persistence.dll

@@ -1,21 +1,14 @@
-﻿using DepoYazılımAPI.Application.Abstractions;
-using Microsoft.EntityFrameworkCore;
-using DepoYazılımAPI.Persistence.Concretes;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.IdentityModel.Protocols;
-using Microsoft.Extensions.Configuration;
-using DepoYazılımAPI.Application.Repositorys;
+﻿using DepoYazılımAPI.Application.Repositorys;
 using DepoYazılımAPI.Application.Repositorys.File;
-using DepoYazılımAPI.Persistence.Repositories.File;
 using DepoYazılımAPI.Application.Repositorys.File.InvoiceFile;
+using DepoYazılımAPI.Application.Repositorys.File.StockCardImageFile;
+using DepoYazılımAPI.Domin.Entity.Identity;
+using DepoYazılımAPI.Persistence.Concretes;
+using DepoYazılımAPI.Persistence.Repositories.File;
 using DepoYazılımAPI.Persistence.Repositories.File.InvoiceFile;
 using DepoYazılımAPI.Persistence.Repositories.File.StockCardImageFile;
-using DepoYazılımAPI.Application.Repositorys.File.StockCardImageFile;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DepoYazılımAPI.Persistence
 {
@@ -24,7 +17,16 @@ namespace DepoYazılımAPI.Persistence
         public static void AddPersistenceServices(this IServiceCollection services)
         {
            
+            
             services.AddDbContext<DepoYazılımAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
+            services.AddIdentity<AppUser, AppRole>(options => 
+            { 
+                options.Password.RequiredLength = 3;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+            }).AddEntityFrameworkStores<DepoYazılımAPIDbContext>();
             services.AddScoped<IStockCardReadRepository, StockCardReadRepository>();
             services.AddScoped<IStockCardWriteRepository, StockCardWriteRepository>();
             services.AddScoped<IFileReadRepository,FileReadRepository>();

@@ -1,20 +1,14 @@
 ﻿using DepoYazılımAPI.Domin.Entity.Common;
-using DepoYazılımAPI.Domin.Entity;
 using DepoYazılımAPI.Domin.Entity.CustomerItem;
-using DepoYazılımAPI.Domin.Entity.StockCard;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using DepoYazılımAPI.Domin.Entity.FileUpload;
+using DepoYazılımAPI.Domin.Entity.Identity;
+using DepoYazılımAPI.Domin.Entity.StockCard;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace DepoYazılımAPI.Persistence.Concretes
 {
-    public class DepoYazılımAPIDbContext : DbContext
+    public class DepoYazılımAPIDbContext : IdentityDbContext<AppUser,AppRole,string>     //normalde DbContext ama user ile ilgili işlemlerde  IdentityDbContext
     {
         public DepoYazılımAPIDbContext(DbContextOptions options) : base(options)
         {

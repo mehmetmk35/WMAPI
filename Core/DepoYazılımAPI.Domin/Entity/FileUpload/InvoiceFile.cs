@@ -9,5 +9,6 @@ namespace DepoYazılımAPI.Domin.Entity.FileUpload
     public class InvoiceFile:File
     {
         public decimal InvoiceNo { get; set; }
+       
     }
 }

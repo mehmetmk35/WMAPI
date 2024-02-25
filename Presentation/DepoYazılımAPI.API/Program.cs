@@ -1,3 +1,4 @@
+using DepoYazýlýmAPI.Application;
 using DepoYazýlýmAPI.Application.Validators.StockCard;
 using DepoYazýlýmAPI.Infrastructure;
 using DepoYazýlýmAPI.Infrastructure.Filters.Validation;
@@ -8,6 +9,7 @@ using FluentValidation.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+builder.Services.AddApplicationServices();
 builder.Services.AddStorage<LocalStorage>();
 builder.Services.AddControllers(opt=>opt.Filters.Add<ValidationFilter>())//filter ekleme yapýyorz
     .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<CreateStockCardRecordValidator>()) //bu iþlemde controller'a gelmeden önce kontrol edip geri dönüþ verir tarayýcý consola

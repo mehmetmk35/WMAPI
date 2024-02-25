@@ -1,15 +1,9 @@
-﻿
-using DepoYazılımAPI.Application.ViewModels.StockCardR;
+﻿using DepoYazılımAPI.Application.Features.Commands.StockCard.CreateStock;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DepoYazılımAPI.Application.Validators.StockCard
 {
-    public class CreateStockCardRecordValidator : AbstractValidator<CreateStockCardRecord>
+    public class CreateStockCardRecordValidator : AbstractValidator<CreateStockCommandRequest>
     {
         public CreateStockCardRecordValidator()
         {

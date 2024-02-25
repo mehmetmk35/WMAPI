@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace DepoYazılımAPI.Infrastructure.Services.Storage.Local
 {
-    public class LocalStorage : ILocalStorage
+    public class LocalStorage : Storage, ILocalStorage
     {
         readonly IWebHostEnvironment _webHostEnvironment;
 
@@ -52,9 +52,9 @@ namespace DepoYazılımAPI.Infrastructure.Services.Storage.Local
             foreach (IFormFile file in files)
             {
                 // string fileNewName = await FileRenameAsync(uploadPath, file.FileName);
-
-                await CopyFileAsync($"{uploadPath}\\{file.Name}", file);
-                datas.Add((file.Name, $"{filePath}\\{file.Name}"));
+                string newFileNmae= await FileRenameAsync(filePath, file.Name,HasFile);
+                await CopyFileAsync($"{uploadPath}\\{newFileNmae}", file);
+                datas.Add((newFileNmae, $"{filePath}\\{newFileNmae}"));
 
             }
             return datas;

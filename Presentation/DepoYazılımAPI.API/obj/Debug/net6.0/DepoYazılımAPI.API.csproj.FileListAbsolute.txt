@@ -142,3 +142,11 @@ C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\DepoYazılımAPI.Infrastructure.pdb
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\DepoYazılımAPI.API.staticwebassets.runtime.json
 C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\obj\Debug\net6.0\DepoYazılımAPI.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\MediatR.dll
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\MediatR.Contracts.dll
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\admin\Desktop\proje\Depo_Yazılım\BENIM\DepoYazılımAPI\Presentation\DepoYazılımAPI.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

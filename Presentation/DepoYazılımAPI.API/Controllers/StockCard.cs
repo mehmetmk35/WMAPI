@@ -1,10 +1,14 @@
 ﻿using DepoYazılımAPI.Application.Abstractions.Storage;
+using DepoYazılımAPI.Application.Features.Commands.DeleteStockCard;
+using DepoYazılımAPI.Application.Features.Commands.StockCard.CreateStock;
+using DepoYazılımAPI.Application.Features.Commands.StockCardImageFile;
+using DepoYazılımAPI.Application.Features.Queries.StockCard.GetStockByStockCode;
+using DepoYazılımAPI.Application.Features.Queries.StockCard.StockCard.GetAllStock;
 using DepoYazılımAPI.Application.Repositorys;
 using DepoYazılımAPI.Application.Repositorys.File.StockCardImageFile;
-using DepoYazılımAPI.Application.ViewModels.StockCardR;
-using DepoYazılımAPI.Domain.RequestParameters;
-using DepoYazılımAPI.Domin.Entity.StockCard;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace DepoYazılımAPI.API.Controllers
 {
@@ -18,77 +22,49 @@ namespace DepoYazılımAPI.API.Controllers
         private readonly IStockCardImageFileWriteRepository _stockCardImageFileWriteRepository;
         private readonly IStockCardImageFileReadRepository _stockCardImageFileReadRepository;
 
-        public StockCardController(IStockCardReadRepository stockCardReadRepository, IStockCardWriteRepository stockCardWriteRepository, IStockCardImageFileWriteRepository stockCardImageFileWriteRepository, IStockCardImageFileReadRepository stockCardImageImageFileReadRepository, IStockCardImageFileReadRepository stockCardImageFileReadRepository, IStorageService storageService)
+        private readonly IMediator _mediator;
+
+        public StockCardController(IStockCardReadRepository stockCardReadRepository, IStockCardWriteRepository stockCardWriteRepository, IStockCardImageFileWriteRepository stockCardImageFileWriteRepository, IStockCardImageFileReadRepository stockCardImageImageFileReadRepository, IStockCardImageFileReadRepository stockCardImageFileReadRepository, IStorageService storageService, IMediator mediator = null)
         {
             _stockCardReadRepository = stockCardReadRepository;
             _stockCardWriteRepository = stockCardWriteRepository;
             _stockCardImageFileWriteRepository = stockCardImageFileWriteRepository;
             _stockCardImageFileReadRepository = stockCardImageFileReadRepository;
             _storageService = storageService;
+            _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Get(CreateStockCardRecord stockCardRecord)
+        public async Task<IActionResult> Get(CreateStockCommandRequest createStockCommandRequest)
         {
-            
-            if (ModelState.IsValid)
-            {
-                
-            }
-            await _stockCardWriteRepository.AddAsync(new StockCardRecord {
-                StockCode = stockCardRecord.StockCode,
-                CompanyName= stockCardRecord.CompanyName,
-                BranchCode= stockCardRecord.BranchCode,
-                CreatedBy= stockCardRecord.CreatedBy
-            });
-            await _stockCardWriteRepository.SaveAsync();
-
-            return Ok();
+            CreateStockCommandResponse  response= await  _mediator.Send(createStockCommandRequest);
+            return Ok((int)HttpStatusCode.Created);
         }
         [HttpGet]
-        public async Task<IActionResult> StokList([FromQuery]Pagination pagination)
+        public async Task<IActionResult> StokList([FromQuery] GetAllStockQueryRequest getAllStockQueryRequest)
          {
-            var totalCount = _stockCardReadRepository.GetWhere(x => x.IsDeleted == false, false).Count();
-             var stockList = _stockCardReadRepository.GetWhere(x=>x.IsDeleted==false,false).Select(x => new
-            {
-                x.StockCode,
-                x.StockName,
-                x.BranchCode,
-                x.CreatedAt,
-                x.CreatedBy
-            }).Skip(pagination.Size*pagination.Page).Take(pagination.Size);
-            return Ok(new
-            {
-                totalCount, stockList
-            });
+            GetAllStockQueryResponse response = await _mediator.Send(getAllStockQueryRequest);
+            return Ok(response);
+        }
+        [HttpGet("{StockCode}")]
+        public async Task<IActionResult> GetStockByStockCode([FromRoute]GetStockByStockCodeQueriesRequest getStockByStockCodeQueriesRequest  )
+        {
+            GetStockByStockCodeQueriesResponse response = await _mediator.Send(getStockByStockCodeQueriesRequest);
+            return Ok(response);
         }
 
         [HttpDelete("{stockCode}")]
-        public async Task<IActionResult> Delete(string stockCode)
-        {
-           
-          
-        await  _stockCardWriteRepository.Remove(stock => stock.StockCode == stockCode);
-            _stockCardWriteRepository.SaveAsync();
+        public async Task<IActionResult> DeleteStockCard([FromRoute]DeleteStockCardCommandRequest deleteStockCardCommandRequest)
+        {    await  _mediator.Send(deleteStockCardCommandRequest);
             return Ok();
-
         }
 
         [HttpPost("[action]")]
-        public  async Task<IActionResult> Upload()
+        public  async Task<IActionResult> Upload([FromQuery]StockCardImageFileCommandRequest stockCardImageFile)
         {
-            List<(string Filename, string pathOrContainerName)> datas= await _storageService.UploadAsync("resource/files", Request.Form.Files);
+            stockCardImageFile.FormCollection = Request.Form.Files;
 
-             await _stockCardImageFileWriteRepository.AddRangeAsync(datas.Select(d => new Domin.Entity.FileUpload.StockCardImageFile
-            {
-                BranchCode = 1,
-                CompanyName = "test1",
-                CreatedBy = "mehmet",
-                Name = d.Filename,
-                Storage = _storageService.StorageName,
-                Path = d.pathOrContainerName
-            }).ToList());
-            
+            await _mediator.Send(stockCardImageFile);
             return Ok();
         }
     }
