@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from './layout/layout.module';
 import { ComponentsModule } from './components/components.module';
+import { DialogModule } from '../dialog/dialog.module';
  
 
 
@@ -11,7 +12,8 @@ import { ComponentsModule } from './components/components.module';
   imports: [
     CommonModule,
     LayoutModule,
-    ComponentsModule 
+    ComponentsModule ,
+    DialogModule
      
   ],
   exports:[

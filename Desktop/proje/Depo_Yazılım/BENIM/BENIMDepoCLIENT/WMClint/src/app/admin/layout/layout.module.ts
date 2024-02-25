@@ -4,7 +4,7 @@ import { LayoutComponent } from './layout.component';
 import { ComponentsModule } from './components/components.module';
 import { RouterModule } from '@angular/router';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { FileUploadModule } from 'src/app/services/common/file-upload/file-upload.module';
+
 
 
 
@@ -17,8 +17,8 @@ import { FileUploadModule } from 'src/app/services/common/file-upload/file-uploa
     CommonModule,
     ComponentsModule,
     RouterModule,
-    MatSidenavModule,
-    FileUploadModule
+    MatSidenavModule
+    
   ],
   exports: [
   LayoutComponent

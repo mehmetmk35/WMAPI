@@ -4,7 +4,9 @@ import {MatTableDataSource} from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { StockList } from 'src/app/contracts/stockList/stockList';
+import { SelectStockImageDialogComponent } from 'src/app/dialog/select-stock-image-dialog/select-stock-image-dialog.component';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
+import { DialogService } from 'src/app/services/common/dialog/dialog.service';
 import { StockcardService } from 'src/app/services/common/model/Stock/stockcard.service';
 
 @Component({
@@ -13,16 +15,13 @@ import { StockcardService } from 'src/app/services/common/model/Stock/stockcard.
   styleUrls: ['./stockcardlist.component.scss']
 })
 export class StockcardlistComponent extends BaseComponent implements OnInit  {
-  constructor(spinners:NgxSpinnerService,private StockcardS:StockcardService,private alertifyS:AlertifyService) {
+  constructor(spinners:NgxSpinnerService,private StockcardS:StockcardService,private alertifyS:AlertifyService, private dialogService:DialogService) {
       super(spinners);
   }
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  displayedColumns: string[] = ['stockCode', 'stockName', 'createdAt', 'CreatedBy','branchCode','delete'];
+  displayedColumns: string[] = ['stockCode', 'stockName', 'createdAt', 'CreatedBy','branchCode','image','delete'];
   dataSource:MatTableDataSource<StockList>=null
-  async ngOnInit() {
-   this.getStockList();
-      
-  }
+  
   async getStockList(){   
     this.showspinner(SpinnerType.BallScaleMultiple);
     const allstocklist:{totalCount:number,stockList:StockList[]}= await this.StockcardS.read({page: this.paginator ?this.paginator.pageIndex:0,
@@ -38,7 +37,16 @@ export class StockcardlistComponent extends BaseComponent implements OnInit  {
   async pageChange(){
     this.getStockList();
   }
-   
+  async ngOnInit() {
+    this.getStockList();
+       
+   }
+    addStockImage(stockCode:string){
+  this.dialogService.openDialog({data:stockCode ,
+    componentType:SelectStockImageDialogComponent
+    ,options:{width:"1400px"}})
+   }
+
   
  
    

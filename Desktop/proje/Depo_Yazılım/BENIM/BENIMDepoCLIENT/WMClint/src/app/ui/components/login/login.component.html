@@ -1,0 +1,21 @@
+<div class="row">
+
+    <div class="md-3"></div>
+    <div class="md-6">
+            <!-- Kullanıcı Adı*-->
+            <div class="form-group">
+                <label for="username">Kullanıcı Adı</label>
+                <input #txtUsernameOrEmail type="text" class="form-control" id="username" placeholder="Kullanıcı Adı & Email">
+                <!-- <small  class="form-text text-muted invalid-feedback" *ngIf="submitted && component.nameSurname.errors?.required">***</small> -->
+            </div>
+            <!-- Kullanıcı Adı*-->
+            <!--Şifre  -->
+            <div class="form-group">
+                <label for="Password">Şifre*</label>
+                <input #txtpassword type="password" class="form-control" id="Password" placeholder="Şifre">
+            </div>
+            <!--Şifre  -->
+            <button type="submit" style="margin-top: 5px;;" class="btn btn-primary"(click)="login(txtUsernameOrEmail.value,txtpassword.value)">Giriş Yap</button>
+        </div>
+    <div class="md-3"></div>
+</div>

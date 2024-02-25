@@ -8,14 +8,7 @@ import { FileUploadOptions } from 'src/app/services/common/file-upload/file-uplo
 })
 export class LayoutComponent implements OnInit {
   constructor(private alertify:AlertifyService) {}
-  //fileUploadOptions
-  @Output() fileUploadOptions:Partial<FileUploadOptions>={
-    action:"upload",
-    controller:"stockCard",
-    isAdminPage:true,
-    explanation:"Resimleri Yükleyin Veya Seçin",
-    accept:".png, .jpg, .jpeg, .json"
-  }
+  
   //fileUploadOptions
   ngOnInit(): void {
    this.alertify.message("test1",{position:Position.BottomCenter ,messageType:MessageType.Message})

@@ -18,7 +18,11 @@ const routes: Routes = [
   {path:"baskets",loadChildren:()=>import("./ui/components/baskets/baskets.module")
     .then(module=>module.BasketsModule)}, 
   {path:"stocks",loadChildren:()=>import("./ui/components/stocks/stocks.module")
-    .then(module=>module.StocksModule)}
+    .then(module=>module.StocksModule)},
+    {path:"register",loadChildren:()=>import("./ui/components/register/register.module")
+    .then(module=>module.RegisterModule)},
+    {path:"login",loadChildren:()=>import("./ui/components/login/login.module")
+    .then(module=>module.LoginModule)}
 
 
 
