@@ -16,7 +16,7 @@ export class RegisterComponent extends BaseComponent implements OnInit {
   constructor(private formbuilder: FormBuilder,private userService:UserService, private toastrService:CustomToastrService,spinner:NgxSpinnerService)
    { super(spinner)}
   frm: FormGroup
-  submitted:boolean=false
+  submitted:boolean=false 
   ngOnInit(): void {
     this.frm = this.formbuilder.group(
       {

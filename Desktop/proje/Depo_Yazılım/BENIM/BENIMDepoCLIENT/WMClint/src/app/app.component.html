@@ -24,29 +24,32 @@
           <a class="nav-link" routerLink="baskets">basket</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="login">Giriş Yap</a>
+          <a class="nav-link" routerLink="login" *ngIf="!authService.isAuthenticated">Giriş Yap</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="register">Kayıt  Ol</a>
+          <a class="nav-link" style="color: brown;cursor: pointer;"  (click)="signOut()"  *ngIf="authService.isAuthenticated">Çıkış Yap</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-success" type="button"  routerLink="admin">Admin</a>
+          <a class="nav-link" routerLink="register" *ngIf="!authService.isAuthenticated">Kayıt  Ol</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-success" type="button"  routerLink="admin" *ngIf="authService.isAuthenticated">Admin</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
-          </a>
+          </a> -->
        
-          <ul class="dropdown-menu">
+          <!-- <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+          </ul> -->
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+        </li> -->
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

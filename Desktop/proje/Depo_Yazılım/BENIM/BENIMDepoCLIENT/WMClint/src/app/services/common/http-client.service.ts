@@ -30,7 +30,7 @@ export class HttpClientService {
     if (requestParameter.fullEndPoint)
       url = requestParameter.fullEndPoint;
     else
-      console.log(requestParameter, "requestParameter");
+      //console.log(requestParameter, "requestParameter");
 
     url = `${this.url(requestParameter)}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`
 
