@@ -1,4 +1,5 @@
-﻿using DepoYazılımAPI.Application.Repositorys;
+﻿using DepoYazılımAPI.Application.Abstractions.Services;
+using DepoYazılımAPI.Application.Repositorys;
 using DepoYazılımAPI.Application.Repositorys.File;
 using DepoYazılımAPI.Application.Repositorys.File.InvoiceFile;
 using DepoYazılımAPI.Application.Repositorys.File.StockCardImageFile;
@@ -7,6 +8,7 @@ using DepoYazılımAPI.Persistence.Concretes;
 using DepoYazılımAPI.Persistence.Repositories.File;
 using DepoYazılımAPI.Persistence.Repositories.File.InvoiceFile;
 using DepoYazılımAPI.Persistence.Repositories.File.StockCardImageFile;
+using DepoYazılımAPI.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -35,6 +37,8 @@ namespace DepoYazılımAPI.Persistence
             services.AddScoped<IStockCardImageFileReadRepository,StockCardImageFileReadRepository>();
             services.AddScoped<IInvoiceFileReadRepository,InvoiceFileReadRepository>();
             services.AddScoped<IInvoiceFileWriteRepository, InvoiceFileWriteRepository>();
+            services.AddScoped<IUserService,UserService>();
+            services.AddScoped<IAuthService, AuthService>();
         }
 }
 }

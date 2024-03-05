@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using DepoYazılımAPI.Application.Abstractions.Token;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace DepoYazılımAPI.Application
         public static void AddApplicationServices( this IServiceCollection services) 
         {
             services.AddMediatR(typeof(ServiceRegistration));
+            
         }
     } 
 }

@@ -7,6 +7,7 @@ using DepoYazılımAPI.Application.Features.Queries.StockCard.StockCard.GetAllSt
 using DepoYazılımAPI.Application.Repositorys;
 using DepoYazılımAPI.Application.Repositorys.File.StockCardImageFile;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -14,6 +15,7 @@ namespace DepoYazılımAPI.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes ="Admin")]// buraya gelen isteklerde kullanıcı yetkilimi değilmi kontrol et  yetkili ise 200 değilse 401 döner 
     public class StockCardController : ControllerBase
     {  
         private readonly IStockCardReadRepository _stockCardReadRepository;
@@ -37,6 +39,7 @@ namespace DepoYazılımAPI.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Get(CreateStockCommandRequest createStockCommandRequest)
         {
+            bool a=ModelState.IsValid;
             CreateStockCommandResponse  response= await  _mediator.Send(createStockCommandRequest);
             return Ok((int)HttpStatusCode.Created);
         }

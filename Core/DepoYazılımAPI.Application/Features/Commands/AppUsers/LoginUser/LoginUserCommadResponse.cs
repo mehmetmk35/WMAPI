@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DepoYazılımAPI.Application.Features.Commands.AppUsers.LoginUser
+﻿namespace DepoYazılımAPI.Application.Features.Commands.AppUsers.LoginUser
 {
     public class LoginUserCommadResponse
     {
+        
+        
+    }
+    public class LoginUserSuccessCommandResponse: LoginUserCommadResponse 
+    {
+        public DTOs.Token token { get; set; }
+    }
+    public class LoginUserErrorCommandResponse: LoginUserCommadResponse
+    {
+        public string Message { get; set; }
     }
 }

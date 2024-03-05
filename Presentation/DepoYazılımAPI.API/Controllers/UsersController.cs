@@ -21,11 +21,6 @@ namespace DepoYazılımAPI.API.Controllers
              CreateUserCommandResponse response = await _mediator.Send(createUserCommandRequest);
             return   Ok(response);
         }
-        [HttpPost("[action]")]
-        public async Task<IActionResult> Login(LoginUserCommadRequest loginUserCommadRequest) 
-        {
-            LoginUserCommadResponse response = await _mediator.Send(loginUserCommadRequest);
-            return Ok(response);
-        }
+       
     }
 }
