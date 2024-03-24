@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild([
       {path:"Stockcardmovement",component:StockMovementListComponent}
     ])
-  ]
+  ],
+  exports:[StockMovementListComponent]
 })
 export class StockMovementListModule { }

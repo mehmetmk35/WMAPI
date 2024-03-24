@@ -33,6 +33,9 @@
           <a class="nav-link" routerLink="register" *ngIf="!authService.isAuthenticated">Kayıt  Ol</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" routerLink="treeList" *ngIf="!authService.isAuthenticated">treeList</a>
+        </li>
+        <li class="nav-item">
           <a class="btn btn-outline-success" type="button"  routerLink="admin" *ngIf="authService.isAuthenticated">Admin</a>
         </li>
         <li class="nav-item dropdown">

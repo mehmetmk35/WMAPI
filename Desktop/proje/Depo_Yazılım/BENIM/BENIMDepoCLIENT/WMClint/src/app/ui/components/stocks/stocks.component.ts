@@ -14,7 +14,7 @@ export class StocksComponent extends BaseComponent implements OnInit  {
     super(spinner);
   }
   ngOnInit(): void {
-      this.httpClientService.get<Stock[]>({controler:"StockCardRecord"}).subscribe(a=>console.log(a));
+      //this.httpClientService.get<Stock[]>({controler:"StockCardRecord"}).subscribe(a=>console.log(a));
        
       //  this.httpClientService.post({controler:"test"}
       //  ,{

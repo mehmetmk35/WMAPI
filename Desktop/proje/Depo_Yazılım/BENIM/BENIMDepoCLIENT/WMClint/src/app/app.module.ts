@@ -25,7 +25,7 @@ import { HttpErrorHandlerInterceptorService } from './services/common/http-error
     HttpClientModule,
     JwtModule.forRoot({
       config:{
-                tokenGetter:()=>localStorage.getItem("accesToken"),
+                tokenGetter:()=>localStorage.getItem("accessToken"),
                 allowedDomains:["localhost:7114"]  //ilgili token'ımı sadece bu domane gönder diğer başka sitelere gönderme  
             }
     })
